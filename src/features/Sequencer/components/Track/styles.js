@@ -29,9 +29,15 @@ export const Controls = styled.div`
   align-items: center;
 
   > button {
-    max-width: 40px;
+    min-width: 30px;
+    min-height: 30px;
     padding: 0px;
     margin-right: 2px;
+    font-size: 18px;
+
+    :hover {
+      cursor: pointer;
+    }
   }
 `;
 

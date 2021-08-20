@@ -4,8 +4,8 @@ export const Container = styled.div`
   display: flex;
   flex-flow: column;
   margin: 15px auto;
+  max-width: 1360px;
   background-color: rgb(179, 179, 179);
-  min-height: calc(100vh - 320px);
 `;
 
 export const Grid = styled.div`

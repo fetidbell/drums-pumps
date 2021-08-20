@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.2.0",
     "@reduxjs/toolkit": "^1.6.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -15,21 +16,34 @@
     "tone": "^14.7.77"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "craco start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-
   "eslintConfig": {
     "extends": [
       "react-app",
       "airbnb"
     ],
+    "settings": {
+      "import/resolver": {
+        "alias": [
+          ["~assets", "./src/assets"],
+          ["~features", "./src/features"],
+          ["~model", "./src/model"]
+        ]
+      }
+    },
     "rules": {
       "react/jsx-filename-extension": [
         "error",
-        { "extensions": [".js", ".jsx"] }
+        {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
       ],
       "react/no-array-index-key": "off",
       "react/react-in-jsx-scope": "off",
@@ -39,7 +53,7 @@
       "arrow-parens": "off",
       "no-param-reassign": "off"
     }
-  },    
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -55,6 +69,7 @@
   "devDependencies": {
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-prettier": "^3.4.0"
   }
 }

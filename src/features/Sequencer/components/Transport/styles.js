@@ -1,4 +1,8 @@
 import styled from 'styled-components';
+import playIcon from '~assets/icons/play.svg';
+import playToggledIcon from '~assets/icons/playToggled.svg';
+import stopIcon from '~assets/icons/stop.svg';
+import resetIcon from '~assets/icons/reset.svg';
 
 export const Container = styled.div`
   display: flex;
@@ -26,6 +30,12 @@ export const Play = styled.button`
   margin-right: 20px;
   position: relative;
   border: none;
+  background: url(${playIcon}) center no-repeat;
+  cursor: pointer;
+
+  ${({ isToggled }) => isToggled && `
+    background: url(${playToggledIcon}) center no-repeat;
+  `}
 
   :active {
     top: 2px;
@@ -37,10 +47,11 @@ export const Stop = styled.button`
   width: 40px;
   height: 40px;
   margin-right: 25px;
-  background: url('assets/icons/stop.svg') center no-repeat;
+  background: url(${stopIcon}) center no-repeat;
   box-shadow: none;
   border: none;
   position: relative;
+  cursor: pointer;
 
   :active {
     top: 2px;
@@ -51,10 +62,11 @@ export const Stop = styled.button`
 export const Reset = styled.button`
   width: 40px;
   height: 40px;
-  background: url('assets/icons/reset.svg') center no-repeat;
+  background: url(${resetIcon}) center no-repeat;
   box-shadow: none;
   border: none;
   position: relative;
+  cursor: pointer;
 
   :active {
     top: 2px;

@@ -13,6 +13,7 @@ export const Pad = styled.button`
   box-shadow: 1px 1px 1px 1px #000;
   transition: background-color 150ms linear;
   background-color: #39c1f7;
+  cursor: pointer;
 
   ${({ isPushed }) => isPushed && `
     background-color: #f7982d;
@@ -21,4 +22,14 @@ export const Pad = styled.button`
       background-color: #ffcb8f;
     }
   `}
+
+${({ isMuted }) => isMuted && `
+    background-color: #c5c5c5;
+  `}
+
+  &.blaze {
+    width: 60px;
+    height: 60px;
+    background-image: linear-gradient(45deg, #ff8484, #dd7bc8);
+  }
 `;
