@@ -13,7 +13,7 @@ import {
 } from './styles';
 import { getInstrumentNotes } from '../../model/selectors';
 import { toggleNoteMuteness } from '../../model/slices';
-import { toggleMute } from '../../utils/playback';
+import PlaybackController from '../../utils/playback';
 
 export const Track = ({ instrumentName }) => {
   const notes = useSelector(getInstrumentNotes(instrumentName));
@@ -21,14 +21,14 @@ export const Track = ({ instrumentName }) => {
 
   const onMute = () => {
     dispatch(toggleNoteMuteness({ instrumentName }));
-    toggleMute(instrumentName);
+    PlaybackController.toggleMute(instrumentName);
   };
 
   return (
     <Container>
       <Signboard>
         <Name>{instrumentName}</Name>
-        <Icon />
+        <Icon instrument={instrumentName} />
       </Signboard>
       <Controls>
         <Mute type="button" alt="mute" onClick={onMute}>M</Mute>

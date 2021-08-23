@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Container, Slider, Value } from './styles';
-import { setTempo } from '../../../utils/playback';
+import PlaybackController from '../../../utils/playback';
 
 export const TempoSlider = () => {
   const [tempo, setTempoValue] = useState(80);
 
   const onTempoChange = (e) => {
     setTempoValue(e.target.value);
-    setTempo(Math.round(e.target.value));
+    PlaybackController.setTempo(Math.round(e.target.value));
   };
 
   return (

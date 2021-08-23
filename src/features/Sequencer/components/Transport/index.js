@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   Container,
   ControlPanel,
@@ -8,19 +9,26 @@ import {
   Reset,
 } from './styles';
 import { TempoSlider } from './TempoSlider';
-import { onStart, onStop } from '../../utils/playback';
+import PlaybackController from '../../utils/playback';
+import { resetNotesAction } from '../../model/slices';
 
 export const Transport = () => {
   const [isPlayToggled, setIsPlayToggled] = useState(false);
+  const dispatch = useDispatch();
 
   const togglePlay = () => {
     setIsPlayToggled(true);
-    onStart();
+    PlaybackController.onStart();
   };
 
   const toggleStop = () => {
     setIsPlayToggled(false);
-    onStop();
+    PlaybackController.onStop();
+  };
+
+  const onReset = () => {
+    dispatch(resetNotesAction());
+    PlaybackController.resetNotes();
   };
 
   return (
@@ -29,7 +37,7 @@ export const Transport = () => {
         <PlaybackButtons>
           <Play type="button" alt="play" isToggled={isPlayToggled} onClick={togglePlay} />
           <Stop type="button" alt="stop" onClick={toggleStop} />
-          <Reset type="button" alt="reset" />
+          <Reset type="button" alt="reset" onClick={onReset} />
         </PlaybackButtons>
         <TempoSlider />
       </ControlPanel>

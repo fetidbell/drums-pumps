@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import playIcon from '~assets/icons/play.svg';
-import playToggledIcon from '~assets/icons/playToggled.svg';
+import play from '~assets/icons/play.svg';
+import playToggled from '~assets/icons/playToggled.svg';
 import stopIcon from '~assets/icons/stop.svg';
 import resetIcon from '~assets/icons/reset.svg';
 
@@ -9,7 +9,7 @@ export const Container = styled.div`
   justify-content: left;
   margin-bottom: 5px;
   padding: 15px 0;
-  background-color: rgb(155, 155, 155);
+  background-color: rgb(145, 145, 145);
 `;
 
 export const ControlPanel = styled.div`
@@ -30,11 +30,11 @@ export const Play = styled.button`
   margin-right: 20px;
   position: relative;
   border: none;
-  background: url(${playIcon}) center no-repeat;
+  background: url(${play}) center no-repeat;
   cursor: pointer;
 
   ${({ isToggled }) => isToggled && `
-    background: url(${playToggledIcon}) center no-repeat;
+    background: url(${playToggled}) center no-repeat;
   `}
 
   :active {

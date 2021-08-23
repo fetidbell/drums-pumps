@@ -17,6 +17,7 @@ export const Pad = styled.button`
 
   ${({ isPushed }) => isPushed && `
     background-color: #f7982d;
+    box-shadow: none;
     
     &:hover {
       background-color: #ffcb8f;

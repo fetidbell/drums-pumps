@@ -1,13 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Container, Pad } from './styles';
 import { getNoteActivity } from '../../../model/selectors';
 import { toggleNoteActivity } from '../../../model/slices';
-import { setNotes } from '../../../utils/playback';
+import PlaybackController from '../../../utils/playback';
 
 export const Note = ({ instrumentName, noteIndex, isMuted }) => {
   const isPushed = useSelector(getNoteActivity(instrumentName, noteIndex));
-  // const isMuted = useSelector(getNoteMuteness(instrumentName, noteIndex));
 
   const dispatch = useDispatch();
 
@@ -16,11 +15,8 @@ export const Note = ({ instrumentName, noteIndex, isMuted }) => {
       instrumentName,
       noteIndex,
     }));
+    PlaybackController.toggleNoteActivity(instrumentName, noteIndex);
   };
-
-  useEffect(() => {
-    setNotes();
-  }, [isPushed]);
 
   return (
     <Container>

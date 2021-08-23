@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import kick from '~assets/icons/kick.svg';
+import snare from '~assets/icons/snare.svg';
+import hihat from '~assets/icons/hihat.svg';
 
 export const Container = styled.div`
   display: flex;
@@ -19,9 +22,21 @@ export const Name = styled.div`
 `;
 
 export const Icon = styled.div`
-  background: url(${({ iconUrl }) => iconUrl});
   width: 50px;
   height: 50px;
+  
+  background: url(${({ instrument }) => {
+    switch (instrument) {
+      case 'kick':
+        return kick;
+      case 'snare':
+        return snare;
+      case 'hihat':
+        return hihat;
+      default:
+        return '';
+    }
+  }}) no-repeat;
 `;
 
 export const Controls = styled.div`

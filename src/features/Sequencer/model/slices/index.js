@@ -23,7 +23,17 @@ export const sequencerSlice = createSlice({
         }
       ));
     },
+    resetNotesAction(state) {
+      Object.keys(state.notes).forEach((instrument) => {
+        state.notes[instrument] = state.notes[instrument].map((note) => (
+          {
+            ...note,
+            isActive: false,
+          }
+        ));
+      });
+    },
   },
 });
 
-export const { toggleNoteActivity, toggleNoteMuteness } = sequencerSlice.actions;
+export const { toggleNoteActivity, toggleNoteMuteness, resetNotesAction } = sequencerSlice.actions;

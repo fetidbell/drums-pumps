@@ -1,12 +1,13 @@
 import React from 'react';
 import { GlobalStyles } from './components/GlobalStyles';
-import { Sequencer } from './features/Sequencer';
+import { MainPage } from '~modules/main';
+import 'normalize.css';
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <Sequencer />
+      <MainPage />
     </>
   );
 }

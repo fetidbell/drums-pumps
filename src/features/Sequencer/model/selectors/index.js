@@ -16,5 +16,3 @@ export const getInstrumentsNames = () => ({ sequencer }) => {
 export const getInstrumentNotes = (instrumentName) => ({ sequencer }) => (
   sequencer.notes[instrumentName]
 );
-
-export const getSequencerGrid = ({ sequencer }) => sequencer.sequencerGrid;
