@@ -42,23 +42,19 @@ export const Icon = styled.div`
 export const Controls = styled.div`
   display: flex;
   align-items: center;
-
-  > button {
-    min-width: 30px;
-    min-height: 30px;
-    padding: 0px;
-    margin-right: 2px;
-    font-size: 18px;
-
-    :hover {
-      cursor: pointer;
-    }
-  }
 `;
 
-export const Mute = styled.button``;
+export const ControlButton = styled.button`
+  min-width: 30px;
+  min-height: 30px;
+  padding: 0px;
+  margin-right: 2px;
+  font-size: 18px;
 
-export const Solo = styled.button``;
+  :hover {
+    cursor: pointer;
+  }
+`;
 
 export const Notes = styled.div`
   display: flex;

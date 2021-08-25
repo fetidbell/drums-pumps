@@ -7,8 +7,7 @@ import {
   Name,
   Icon,
   Controls,
-  Mute,
-  Solo,
+  ControlButton,
   Notes,
 } from './styles';
 import { getInstrumentNotes } from '../../model/selectors';
@@ -24,6 +23,10 @@ export const Track = ({ instrumentName }) => {
     PlaybackController.toggleMute(instrumentName);
   };
 
+  const onSolo = () => {
+    PlaybackController.toggleSolo(instrumentName);
+  };
+
   return (
     <Container>
       <Signboard>
@@ -31,8 +34,8 @@ export const Track = ({ instrumentName }) => {
         <Icon instrument={instrumentName} />
       </Signboard>
       <Controls>
-        <Mute type="button" alt="mute" onClick={onMute}>M</Mute>
-        <Solo type="button" alt="solo">S</Solo>
+        <ControlButton type="button" alt="mute" onClick={onMute}>M</ControlButton>
+        <ControlButton type="button" alt="solo" onClick={onSolo}>S</ControlButton>
       </Controls>
       <Notes>
         {notes.map((note, index) => (

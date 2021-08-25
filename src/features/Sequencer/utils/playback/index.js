@@ -93,7 +93,7 @@ const toggleNoteActivity = (instrument, noteIndex) => {
 };
 
 // Функция для изменения темпа
-const setTempo = (value) => {
+const setTempo = value => {
   Tone.Transport.bpm.value = value;
 };
 
@@ -118,9 +118,14 @@ const setChannelVolume = (instrument, level) => {
   channel.volume.value = level;
 };
 
-// Функция управляет mute'ом трека
-const toggleMute = (instrument) => {
+// Функция управляет mute'ом канала
+const toggleMute = instrument => {
   channels[instrument].mute = !channels[instrument].muted;
+};
+
+// Функция управляет солированием канала
+const toggleSolo = instrument => {
+  channels[instrument].solo = !channels[instrument].solo;
 };
 
 const PlaybackController = {
@@ -131,6 +136,7 @@ const PlaybackController = {
   resetNotes,
   setChannelVolume,
   toggleMute,
+  toggleSolo,
 };
 
 export default PlaybackController;

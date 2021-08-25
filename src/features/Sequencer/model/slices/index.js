@@ -9,28 +9,18 @@ export const sequencerSlice = createSlice({
   reducers: {
     toggleNoteActivity(state, action) {
       const { instrumentName, noteIndex } = action.payload;
-      const instrumentToChangeNotes = state.notes[instrumentName];
-      instrumentToChangeNotes[noteIndex].isActive = !instrumentToChangeNotes[noteIndex].isActive;
-      state.notes[instrumentName] = instrumentToChangeNotes;
+      const notes = state.notes[instrumentName];
+      notes[noteIndex].isActive = !notes[noteIndex].isActive;
     },
     toggleNoteMuteness(state, action) {
       const { instrumentName } = action.payload;
-      const instrumentToChangeNotes = state.notes[instrumentName];
-      state.notes[instrumentName] = instrumentToChangeNotes.map((note) => (
-        {
-          ...note,
-          isMuted: !note.isMuted,
-        }
-      ));
+      const notes = state.notes[instrumentName];
+      notes.forEach(note => { note.isMuted = !note.isMuted; }, notes);
     },
     resetNotesAction(state) {
       Object.keys(state.notes).forEach((instrument) => {
-        state.notes[instrument] = state.notes[instrument].map((note) => (
-          {
-            ...note,
-            isActive: false,
-          }
-        ));
+        const notes = state.notes[instrument];
+        notes.forEach(note => { note.isActive = false; }, notes);
       });
     },
   },
