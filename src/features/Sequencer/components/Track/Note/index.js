@@ -5,17 +5,17 @@ import { getNoteActivity } from '../../../model/selectors';
 import { toggleNoteActivity } from '../../../model/slices';
 import PlaybackController from '../../../utils/playback';
 
-export const Note = ({ instrumentName, noteIndex, isMuted }) => {
-  const isPushed = useSelector(getNoteActivity(instrumentName, noteIndex));
+export const Note = ({ instrument, noteIndex, isMuted }) => {
+  const isPushed = useSelector(getNoteActivity(instrument, noteIndex));
 
   const dispatch = useDispatch();
 
   const onPush = () => {
     dispatch(toggleNoteActivity({
-      instrumentName,
+      instrument,
       noteIndex,
     }));
-    PlaybackController.toggleNoteActivity(instrumentName, noteIndex);
+    PlaybackController.toggleNoteActivity(instrument, noteIndex);
   };
 
   return (

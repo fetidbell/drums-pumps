@@ -50,10 +50,16 @@ export const ControlButton = styled.button`
   padding: 0px;
   margin-right: 2px;
   font-size: 18px;
+  border-radius: 5px;
 
   :hover {
     cursor: pointer;
   }
+
+  ${({ isPushed }) => isPushed && `
+    background-color: #f7982d;
+    box-shadow: none;
+  `}
 `;
 
 export const Notes = styled.div`

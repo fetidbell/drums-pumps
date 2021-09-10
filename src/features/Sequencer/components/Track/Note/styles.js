@@ -24,9 +24,9 @@ export const Pad = styled.button`
     }
   `}
 
-${({ isMuted }) => isMuted && `
-    background-color: #c5c5c5;
-  `}
+  ${({ isMuted }) => isMuted && `
+      background-color: #c5c5c5;
+    `}
 
   &.blaze {
     width: 60px;

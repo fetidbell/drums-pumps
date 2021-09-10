@@ -1,18 +1,24 @@
-export const getNoteActivity = (instrumentName, noteIndex) => ({ sequencer }) => {
-  const instrument = sequencer.notes[instrumentName];
-  return instrument[noteIndex].isActive;
+export const getNoteActivity = (instrument, noteIndex) => ({ sequencer }) => {
+  const instrumentNotes = sequencer.instruments[instrument].notes;
+  return instrumentNotes[noteIndex].isActive;
 };
 
-export const getNoteMuteness = (instrumentName, noteIndex) => ({ sequencer }) => {
-  const instrument = sequencer.notes[instrumentName];
-  return instrument[noteIndex].isMuted;
-};
+export const getNoteMuteness = (instrument) => ({ sequencer }) => (
+  sequencer.instruments[instrument].isMuted
+);
 
-export const getInstrumentsNames = () => ({ sequencer }) => {
-  const names = Object.keys(sequencer.notes).map(instrument => instrument);
-  return names;
-};
+export const getInstrumentsNames = () => ({ sequencer }) => (
+  Object.values(sequencer.instruments).map(({ name }) => name)
+);
 
-export const getInstrumentNotes = (instrumentName) => ({ sequencer }) => (
-  sequencer.notes[instrumentName]
+export const getInstrumentNotes = (instrument) => ({ sequencer }) => (
+  sequencer.instruments[instrument].notes
+);
+
+export const getTrackSoloState = (instrument) => ({ sequencer }) => (
+  sequencer.instruments[instrument].isSoloed
+);
+
+export const getTrackMuteState = (instrument) => ({ sequencer }) => (
+  sequencer.instruments[instrument].isMuted
 );

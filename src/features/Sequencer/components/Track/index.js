@@ -10,40 +10,57 @@ import {
   ControlButton,
   Notes,
 } from './styles';
-import { getInstrumentNotes } from '../../model/selectors';
-import { toggleNoteMuteness } from '../../model/slices';
+import { getInstrumentNotes, getTrackSoloState, getTrackMuteState } from '../../model/selectors';
+import { toggleTrackMuteness, toggleTrackSolo } from '../../model/slices';
 import PlaybackController from '../../utils/playback';
 
-export const Track = ({ instrumentName }) => {
-  const notes = useSelector(getInstrumentNotes(instrumentName));
+export const Track = ({ instrument }) => {
+  const notes = useSelector(getInstrumentNotes(instrument));
+  const isSoloed = useSelector(getTrackSoloState(instrument));
+  const isMuted = useSelector(getTrackMuteState(instrument));
   const dispatch = useDispatch();
 
   const onMute = () => {
-    dispatch(toggleNoteMuteness({ instrumentName }));
-    PlaybackController.toggleMute(instrumentName);
+    dispatch(toggleTrackMuteness({ instrument }));
+    PlaybackController.toggleMute(instrument);
   };
 
   const onSolo = () => {
-    PlaybackController.toggleSolo(instrumentName);
+    dispatch(toggleTrackSolo({ instrument }));
+    PlaybackController.toggleSolo(instrument);
   };
 
   return (
     <Container>
       <Signboard>
-        <Name>{instrumentName}</Name>
-        <Icon instrument={instrumentName} />
+        <Name>{instrument}</Name>
+        <Icon instrument={instrument} />
       </Signboard>
       <Controls>
-        <ControlButton type="button" alt="mute" onClick={onMute}>M</ControlButton>
-        <ControlButton type="button" alt="solo" onClick={onSolo}>S</ControlButton>
+        <ControlButton
+          type="button"
+          alt="mute"
+          isPushed={isMuted}
+          onClick={onMute}
+        >
+          M
+        </ControlButton>
+        <ControlButton
+          type="button"
+          alt="solo"
+          isPushed={isSoloed}
+          onClick={onSolo}
+        >
+          S
+        </ControlButton>
       </Controls>
       <Notes>
         {notes.map((note, index) => (
           <Note
             key={index}
-            instrumentName={note.instrumentName}
+            instrument={note.instrument}
             noteIndex={index}
-            isMuted={note.isMuted}
+            isMuted={isMuted}
           />
         ))}
       </Notes>

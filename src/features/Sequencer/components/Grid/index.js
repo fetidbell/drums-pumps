@@ -5,10 +5,10 @@ import { Container } from './styles';
 import { getInstrumentsNames } from '../../model/selectors';
 
 export const Grid = () => {
-  const instruments = useSelector(getInstrumentsNames());
+  const instrumentsNames = useSelector(getInstrumentsNames());
   return (
     <Container>
-      {instruments.map((instrument, index) => <Track instrumentName={instrument} key={index} />)}
+      {instrumentsNames.map((name, index) => <Track instrument={name} key={index} />)}
     </Container>
   );
 };
