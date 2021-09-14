@@ -1,4 +1,8 @@
+![plot](./src/assets/logo.svg)
+
 # Drum sequencer for cool boys and girls
+
+![plot](./src/assets/screen.png)
 
 ## What is it?
 
@@ -16,14 +20,13 @@ With this app you can:
 
 ## How to launch it?
 
-First, you need preinstalled [NodeJS](https://nodejs.org/en/) and [Git](https://git-scm.com/) on your computer. Then you need execute commands down below:
+First, you need preinstalled [NodeJS](https://nodejs.org/en/) and [Git](https://git-scm.com/) on your computer. Then you need to execute commands down below:
 
-`git clone https://github.com/fetidbell/drums-pumps.git`
+```sh
+git clone https://github.com/fetidbell/drums-pumps.git
+cd ./drums-pumps
+npm install
+npm start
+```
 
-`cd ./drums-pumps`
-
-`npm install`
-
-`npm start`
-
-Then you can check your http://localhost:3000/ in the browser - app will be ready to use!
+Navigate to http://localhost:3000/ in the browser - app will be ready to use!
